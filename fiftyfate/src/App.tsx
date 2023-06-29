@@ -1,10 +1,11 @@
-function App() {
+import Controller from './components/Controller';
 
+function App() {
   return (
-   <div className="">
-      <div className="text-2xl">Hello World</div>
-   </div>
-  )
+    <div className="">
+      <Controller />
+    </div>
+  );
 }
 
-export default App
+export default App;
