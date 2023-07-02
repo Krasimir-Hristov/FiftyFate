@@ -5,12 +5,23 @@ import BetButton from './BetButton';
 type Props = {
   betDirection: string;
   setBetDirection: any;
+  isLoading: boolean;
+  hasWon: boolean;
+  valStored: number;
 };
 
-function BetBox({ betDirection, setBetDirection }: Props) {
+function BetBox({
+  betDirection,
+  setBetDirection,
+  isLoading,
+  valStored,
+  hasWon
+}: Props) {
   return (
     <div className="mt-5">
-      <div className="py-2 border bg-red-100">LAYER 1</div>
+      <div className="py-4 border bg-gray-900 text-white text-right pr-5">
+        {isLoading ? 'Loading...' : `Randon Number Returned: ${valStored}`}
+      </div>
       <div className="flex flex-row justify-between py-2 border">
         <BetButton
           direction="down"
@@ -24,7 +35,11 @@ function BetBox({ betDirection, setBetDirection }: Props) {
         />
         <div></div>
       </div>
-      <div className="py-2 border bg-fuchsia-100">LAYER 3</div>
+      <div className="py-2 border bg-gray-300 text-center text-4xl font-bold">
+
+        {valStored !== 0 && <div className={'' + (hasWon ? 'text-green-500' : 'text-red-500')}>{hasWon ? 'WINNER!!!' : 'BAD LUCK!!!'}</div>}
+
+      </div>
     </div>
   );
 }
